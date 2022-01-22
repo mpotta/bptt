@@ -1,1 +1,7 @@
-# bptt
+# Backpropagation-through-time and Recurrent Neural Networks 
+
+Artificial Recurrent Neural Networks (RNNs) are increasingly used in neuroscience research to explain neurobiological phenomena while considering the architectural and computational constraints of biological networks. Such an approach aims to train an RNN using machine learning tools and then compare it to the network dynamics observed in the brain. Credit assignment in RNNs is classically performed using backpropagation-through-time (BPTT), the temporal analog of the standard backpropagation-of-error algorithm. However, it remains unclear if BPTT learns solutions to dynamic problems similar to those employed by the brain, particularly because deep learning algorithms are often considered black boxes.
+
+In this work, we aim to address this fundamental algorithmic question for learning dynamic time series by exploring the spectral structure of RNNs trained via BPTT on temporal tasks. Specifically, we take single-variable time-series processing tasks and compare the solutions found by BPTT against solutions based on feedback loops. Since feedback loops are widely used in control theory, are known to be efficient in time-series processing, and are also very prominent in neuroscience, particularly cortical circuits, they are ideal candidates for this comparison.
+
+This work was done at the Institute of Neuroinformatics, University of Zurich and ETH Zurich under the supervision of [Prof. Dr. Benjamin F. Grewe](https://scholar.google.de/citations?user=ZA-1rh8AAAAJ&hl=en) and the [Dr. Pau Vilimelis Aceituno](https://scholar.google.com/citations?user=dahpSB8AAAAJ&hl=en). 

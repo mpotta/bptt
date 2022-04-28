@@ -308,34 +308,50 @@ def run_network(N_current, hidden_dim):
         "count_stacked": str(count_stacked),
         "euclidean_dist_stacked": str(euclidean_dist_stacked),
         "largest_exp_dist_stacked": str(largest_exp_dist_stacked),
+        "loss_train": str(loss_train[-1]),
+        "loss_test": str(loss_test)
     }
 
 def main():
-    trials = 20
+    trials = 10
     N_max = 15
 
-    f = open("bulk_run_"+str(trials)+".csv", "w")
-    fieldnames = ['N', 'trial_number', 'hidden_dim', 'count_stacked', 'euclidean_dist_stacked', 'largest_exp_dist_stacked']
+    f = open("bulk_run_nonlinear_phase_space_N15_trials.csv", "w")
+    fieldnames = ['N', 'trial_number', 'hidden_dim', 'count_stacked', 'euclidean_dist_stacked', 'largest_exp_dist_stacked', 'loss_train', 'loss_test']
     writer = csv.DictWriter(f, fieldnames=fieldnames)
 
-    for N_current in range(3, N_max+1, 2):
-        for i in range(trials):
-            for hidden_dim in range(N_current,N_current*2,N_current*5):
-                result = run_network(N_current, hidden_dim)
-                writer.writerow({
-                    'N':result['N'],
-                    'trial_number':i,
-                    'hidden_dim':result['hidden_dims'],
-                    'count_stacked':result['count_stacked'],
-                    'euclidean_dist_stacked':result['euclidean_dist_stacked'],
-                    'largest_exp_dist_stacked':result['largest_exp_dist_stacked'],
-                    })
+    # for N_current in range(3, N_max+1, 2):
+    #     for i in range(trials):
+    #         for hidden_dim in [N_current,30,45,60,75,90,105,120,135,150,165,180,200]:
+    #             result = run_network(N_current, hidden_dim)
+    #             writer.writerow({
+    #                 'N':result['N'],
+    #                 'trial_number':i,
+    #                 'hidden_dim':result['hidden_dims'],
+    #                 'count_stacked':result['count_stacked'],
+    #                 'euclidean_dist_stacked':result['euclidean_dist_stacked'],
+    #                 'largest_exp_dist_stacked':result['largest_exp_dist_stacked'],
+    #                 'loss_train':result['loss_train'],
+    #                 'loss_test':result['loss_test']
+    #                 })
+    # f.close()
+    for i in range(trials):
+        for hidden_dim in [15,30,45,60,75,90,105,120,135,150,165,180,200]:
+            result = run_network(15, hidden_dim)
+            writer.writerow({
+                'N':result['N'],
+                'trial_number':i,
+                'hidden_dim':result['hidden_dims'],
+                'count_stacked':result['count_stacked'],
+                'euclidean_dist_stacked':result['euclidean_dist_stacked'],
+                'largest_exp_dist_stacked':result['largest_exp_dist_stacked'],
+                'loss_train':result['loss_train'],
+                'loss_test':result['loss_test']
+                })
     f.close()
 
 if __name__ == "__main__":
   main()
-
-
 
 
 
